@@ -27,7 +27,7 @@ Route::get('/biblioteca', [BibliotecaController::class, 'index'])->middleware(['
 
 Route::get('/insertarJuego', [BibliotecaController::class, 'create'])->name('juegos.crear');
 
-Route::post('/insertarJuego', [BibliotecaController::class, 'store'])->name('juegos.guardar');
+Route::post('/insertarJuego', [BibliotecaController::class, 'store'])->middleware('insertado')->name('juegos.guardar');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
@@ -35,7 +35,7 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-Route::delete('/eliminarJuego', [BibliotecaController::class, 'destroy'])->name('juegos.eliminar');
+Route::post('/eliminarJuego/{juego}', [BibliotecaController::class, 'destroy'])->middleware('eliminado')->name('juegos.eliminar');
 
 Route::get('/editarJuego/{juego}/editar', [BibliotecaController::class, 'edit'])->name('juegos.editar');
 Route::put('/editarJuego/{juego}', [BibliotecaController::class, 'update'])->name('juegos.actualizar');

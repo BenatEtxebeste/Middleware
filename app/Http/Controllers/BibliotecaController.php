@@ -35,9 +35,9 @@ class BibliotecaController extends Controller
         return redirect()->route('biblioteca');
     }
 
-    public function destroy(Request $request)
+    public function destroy(Biblioteca $juego)
     {
-        $request->delete();
+        $juego->delete();
 
         return redirect()->route('biblioteca');
     }

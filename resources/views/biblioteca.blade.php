@@ -56,6 +56,7 @@
                         class="bg-blue-500 hover:bg-blue-700 text-white py-1 px-2 rounded">
                         Editar
                     </a>
+                    @method('DELETE')
                     <a href="{{ route('juegos.eliminar', ['juego' => $juego]) }}"
                         class="bg-red-500 hover:bg-red-700 text-white py-1 px-2 rounded">
                         Eliminar
